@@ -9,8 +9,7 @@ import ReactMarkdown from "react-markdown";
 import {useSelector} from "react-redux";
 
 export const FullPost = () => {
-    //const { params } = useParams();
-    //console.log(params);
+
     const userData = useSelector((state) => state.auth.data);
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(true);
@@ -51,7 +50,6 @@ export const FullPost = () => {
                 isEditable={userData?._id === data.user._id}
             >
                 <ReactMarkdown children={data.text}/>
-                {/*<p>{data.text}</p>*/}
             </Post>
             <CommentsBlock
                 items={[
