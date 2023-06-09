@@ -70,7 +70,7 @@ export const FullPost = () => {
                 ]}
                 isLoading={false}
             >
-                <Index/>
+                {userData && !isLoading ? <Index id={id} setData={setData}/> : <></>}
             </CommentsBlock>
         </>
     );
