@@ -20,13 +20,10 @@ import { LoadingPosts } from "./LoadingPosts";
 export const Home = () => {
   const dispatch = useDispatch();
 
-  const userData = useSelector((state) => state.auth.data); //////
-  const { posts, tags } = useSelector((state) => state.posts); //////
-
   const [selectedTab, setSelectedTab] = useState(0); // новое состояние для хранения выбранной вкладки
 
-  const isPostsLoading = posts.status === "loading"; /////
-  const isTagsLoading = tags.status === "loading"; /////
+  //const isPostsLoading = posts.status === "loading"; /////
+  //const isTagsLoading = tags.status === "loading"; /////
 
   const handleTabChange = (event, newValue) => {
     setSelectedTab(newValue); // обновляем выбранную вкладку

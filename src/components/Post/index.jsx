@@ -37,8 +37,7 @@ export const Post = ({
       dispatch(fetchRemovePost(id));
     }
   };
-  console.log(id);
-  console.log(tags);
+
   return (
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
       {isEditable && (
