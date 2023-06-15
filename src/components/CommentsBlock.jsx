@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from "react";
-
+import React from "react";
 import {SideBlock} from "./SideBlock";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
@@ -8,35 +7,31 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import Skeleton from "@mui/material/Skeleton";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {Index} from "./AddComment";
-import {fetchComment} from "../redux/slices/posts";
 
-export const CommentsBlock = ({ data, postId, items, children}) => {
+
+export const CommentsBlock = ({ data, setData, postId, children}) => {
     const userData = useSelector((state) => state.auth.data);
-    const comments = useSelector((state) => state.posts);
-    const [dataComment, setDataComment] = useState([]);
-    const [isLoadingComm, setIsLoadingComm] = useState(false);
+    const posts = useSelector((state) => state.posts);
 
-
-    console.log(comments)
-    const isCommentsLoading = comments.status === "loading";
+    const isCommentsLoading = posts.status === "loading";
 
     return (
             <>
                 <SideBlock title="Комментарии">
                     <List>
-                        {( isLoadingComm && isCommentsLoading ? [...Array(5)] : items)?.map((obj, index) => (
+                        {( isCommentsLoading ? [...Array(5)] : data.comments)?.map((obj, index) => (
                             <React.Fragment key={index}>
                                 <ListItem alignItems="flex-start">
                                     <ListItemAvatar>
-                                        { isLoadingComm && isCommentsLoading ? (
+                                        { isCommentsLoading ? (
                                             <Skeleton variant="circular" width={40} height={40}/>
                                         ) : (
                                             <Avatar alt={obj.fullName} src={obj.avatarUrl}/>
                                         )}
                                     </ListItemAvatar>
-                                    { isLoadingComm && isCommentsLoading ? (
+                                    { isCommentsLoading ? (
                                         <div style={{display: "flex", flexDirection: "column"}}>
                                             <Skeleton variant="text" height={25} width={120}/>
                                             <Skeleton variant="text" height={18} width={230}/>
@@ -53,9 +48,9 @@ export const CommentsBlock = ({ data, postId, items, children}) => {
                         ))}
                     </List>
                     {children}
-                    {userData ? <Index postId={postId}  dataComment={dataComment} setDataComment={setDataComment} setIsLoadingComm={setIsLoadingComm} /> : <></>}
+                    {userData ? <Index postId={postId} setData={setData} /> : <></>}
                 </SideBlock>
             </>
 
     );
-};
+}

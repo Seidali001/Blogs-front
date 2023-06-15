@@ -20,25 +20,6 @@ export const fetchRemovePost = createAsyncThunk(
   "posts/fetchRemovePost",
   async (id) => await axios.delete(`/posts/${id}`).then(() => {})
 );
-export const fetchComment = createAsyncThunk(
-  "posts/fetchComment",
-  async (id, commentText, _id, fullName, avatarUrl ) => {
-    try {
-    const {data} = await axios.post(`/posts/${id}/comments`, {
-        content: commentText,
-        user: {
-          userId: _id,
-          fullName: fullName,
-          avatarUrl: avatarUrl
-        }
-      })
-      return data
-    } catch (error) {
-      console.warn(error);
-      throw error;
-    }
-  }
-);
 
 export const fetchSortedPostsByViews = createAsyncThunk(
   "posts/fetchSortedPostsByViews",
@@ -109,18 +90,6 @@ const postsSlice = createSlice({
       .addCase(fetchPosts.rejected, (state) => {
         state.posts.items = [];
         state.posts.status = "error";
-      })
-        .addCase(fetchComment.pending, (state) => {
-        state.posts.comments.items = [];
-        state.posts.comments.status = "loading";
-      })
-      .addCase(fetchComment.fulfilled, (state, action) => {
-        state.posts.comments.items = action.payload;
-        state.posts.comments.status = "loaded";
-      })
-      .addCase(fetchComment.rejected, (state) => {
-        state.posts.comments.items = [];
-        state.posts.comments.status = "error";
       })
       .addCase(fetchTags.pending, (state) => {
         state.tags.items = [];

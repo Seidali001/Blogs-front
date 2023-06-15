@@ -1,28 +1,21 @@
-import React, {useCallback, useEffect, useState} from "react";
-
+import React, {useState} from "react";
 import styles from "./AddComment.module.scss";
-
 import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import {useParams} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import axios from "../../axios";
 
 
-export const Index = ({ postId, setDataComment, setIsLoadingComm }) => {
-    const {id} = useParams();
+export const Index = ({postId, setData}) => {
     const userData = useSelector((state) => state.auth.data);
     const [commentText, setCommentText] = useState("");
 
     const handleCommentSubmit = () => {
-        setIsLoadingComm(true)
-
-
-        // Отправка комментария на бэкэнд
-        // Здесь вы можете использовать axios или другую библиотеку для выполнения POST-запроса к API
-        // Пример с использованием axios:
+        //setIsLoadingComm(true)
         axios
+            // Отправка комментария на бэкэнд
             .post(`/posts/${postId}/comments`, {
                 content: commentText,
                 user: {
@@ -32,12 +25,10 @@ export const Index = ({ postId, setDataComment, setIsLoadingComm }) => {
                 }
             })
             .then((res) => {
-                // Комментарий успешно добавлен
                 // Обновление состояния с полученными данными
-                //setData(res.data)
-
-                setDataComment(res.data.comments);
-                setIsLoadingComm(false)
+                setData(res.data)
+                //setIsLoadingComm(false)
+                setCommentText("")
             })
             .catch((error) => {
                 console.warn(error);
@@ -46,20 +37,12 @@ export const Index = ({ postId, setDataComment, setIsLoadingComm }) => {
             });
 
     }
-
-/*    useEffect(() => {
-        dispath(fetchComment(id, commentText, userData._id, userData.fullName, userData.avatarUrl))
-    }, [])*/
-
-
-
-
     return (
         <>
             <div className={styles.root}>
                 <Avatar
                     classes={{root: styles.avatar}}
-                    src={userData.avatarUrl}/*"https://mui.com/static/images/avatar/5.jpg"*/
+                    src={userData.avatarUrl}
                 />
                 <div className={styles.form}>
                     <TextField
