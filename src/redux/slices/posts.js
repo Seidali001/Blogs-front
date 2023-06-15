@@ -62,6 +62,18 @@ export const fetchSortedPostsByDate = createAsyncThunk(
   }
 );
 
+export const fetchSortedPostsByUser = createAsyncThunk("posts/fetchSortedPostsByUser", async (userId) => {
+  try {
+    const { data } = await axios.get(`/posts/user/${userId}`);
+    console.log(data)
+    return data;
+  } catch (error) {
+    console.warn(error);
+    throw error;
+  }
+
+})
+
 const initialState = {
   posts: {
     items: [],
@@ -143,7 +155,19 @@ const postsSlice = createSlice({
       .addCase(fetchSortedPostsByDate.rejected, (state) => {
         state.posts.items = [];
         state.posts.status = "error";
-      });
+      })
+  .addCase(fetchSortedPostsByUser.pending, (state) => {
+      state.posts.items = [];
+      state.posts.status = "loading";
+    })
+        .addCase(fetchSortedPostsByUser.fulfilled, (state, action) => {
+          state.posts.items = action.payload;
+          state.posts.status = "loaded";
+        })
+        .addCase(fetchSortedPostsByUser.rejected, (state) => {
+          state.posts.items = [];
+          state.posts.status = "error";
+        });
   },
 });
 

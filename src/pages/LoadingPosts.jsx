@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
-import { CommentsBlock, Post, TagsBlock } from "../components";
+import { Post, TagsBlock } from "../components";
 import React from "react";
 
-export const LoadingPosts = () => {
-  const userData = useSelector((state) => state.auth.data);
+export const LoadingPosts = ({userData}) => {
   const { posts, tags } = useSelector((state) => state.posts);
 
   const isPostsLoading = posts.status === "loading";
@@ -14,7 +13,7 @@ export const LoadingPosts = () => {
       <Grid container spacing={4}>
         <Grid xs={8} item>
           {isPostsLoading
-            ? [...Array(10)].map((_, index) => (
+            ? [...Array(20)].map((_, index) => (
                 <Post key={index} isLoading={true} />
               ))
             : posts?.items?.map((obj, index) => (

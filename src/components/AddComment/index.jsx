@@ -13,7 +13,6 @@ export const Index = ({postId, setData}) => {
     const [commentText, setCommentText] = useState("");
 
     const handleCommentSubmit = () => {
-        //setIsLoadingComm(true)
         axios
             // Отправка комментария на бэкэнд
             .post(`/posts/${postId}/comments`, {
@@ -27,7 +26,6 @@ export const Index = ({postId, setData}) => {
             .then((res) => {
                 // Обновление состояния с полученными данными
                 setData(res.data)
-                //setIsLoadingComm(false)
                 setCommentText("")
             })
             .catch((error) => {
