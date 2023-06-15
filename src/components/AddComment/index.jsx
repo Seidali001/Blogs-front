@@ -25,6 +25,7 @@ export const Index = ({postId, setData}) => {
             })
             .then((res) => {
                 // Обновление состояния с полученными данными
+                console.log(res.data)
                 setData(res.data)
                 setCommentText("")
             })
