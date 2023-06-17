@@ -9,7 +9,6 @@ import { PostsByTag } from "./components/PostsByTag";
 
 function App() {
   const dispatch = useDispatch();
-  //const isAuth = useSelector(selectIsAuth);
 
   useEffect(() => {
     dispatch(fetchAuthMe());

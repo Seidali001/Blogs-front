@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 import {Post} from "../components";
 import {CommentsBlock} from "../components";
 import axios from "../axios";
 import ReactMarkdown from "react-markdown";
 import {useSelector} from "react-redux";
-import styles from "../components/Header/Header.module.scss";
+import style from "../components/Post/Post.module.scss";
 
 export const FullPost = () => {
     const userData = useSelector((state) => state.auth.data);
@@ -31,16 +31,11 @@ export const FullPost = () => {
     }, []);
 
     if (isLoading) {
-        return <Post isLoading={isLoading} isFullPost/>;
+        return <Post isLoading={isLoading} isFullPost />;
     }
 
     return (
-        <>
-            <div className={styles.inner}>
-                <Link className={styles.logo} to="/">
-                    <div>ALL BLOGS</div>
-                </Link>
-            </div>
+        <div className={style.fullPostPosition}>
                 <Post
                     id={data._id}
                     title={data.title}
@@ -61,6 +56,6 @@ export const FullPost = () => {
                     postId={id}
                 >
                 </CommentsBlock>
-        </>
+        </div>
     );
 };

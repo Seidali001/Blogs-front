@@ -10,8 +10,8 @@ export const LoadingPosts = ({userData}) => {
   const isTagsLoading = tags.status === "loading";
   return (
     <>
-      <Grid container spacing={4}>
-        <Grid xs={8} item>
+      <Grid container spacing={4} >
+        <Grid xs={8} item >
           {isPostsLoading
             ? [...Array(20)].map((_, index) => (
                 <Post key={index} isLoading={true} />
