@@ -195,7 +195,6 @@ export const Header = () => {
                             <Avatar alt="Remy Sharp" src={userData?.avatarUrl} sx={{ width: 32, height: 32 }}/>
                             </Tooltip>
                         </Link> : <AccountCircle/>}
-
                     </IconButton>
                     <Link to="/">
                         <Tooltip title="Главная">
