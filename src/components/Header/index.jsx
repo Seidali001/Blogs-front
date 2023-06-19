@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {styled, alpha} from '@mui/material/styles';
+import {styled, alpha, createTheme} from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,7 +16,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import {Search} from "@mui/icons-material";
 import {useDispatch, useSelector} from "react-redux";
 import {logout, selectIsAuth} from "../../redux/slices/auth";
-import {Tooltip} from "@mui/material";
+import {ThemeProvider, Tooltip} from "@mui/material";
 import Button from "@mui/material/Button";
 import LogoutIcon from '@mui/icons-material/Logout';
 import {Link} from "react-router-dom";
@@ -177,89 +177,100 @@ export const Header = () => {
         </Menu>
     );
 
+    const darkTheme = createTheme({
+        palette: {
+            mode: 'dark',
+            primary: {
+                main: '#1976d2',
+            },
+        },
+    });
+
     return (
         <Box sx={{flexGrow: 1}}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="end"
-                        aria-label="account of current user"
-                        aria-controls={menuId}
-                        aria-haspopup="true"
-                        onClick={handleProfileMenuOpen}
-                        color="inherit"
-                    > {isAuth ?
-                        <Link to="/">
-                            <Tooltip title={userData?.fullName}>
-                            <Avatar alt="Remy Sharp" src={userData?.avatarUrl} sx={{ width: 32, height: 32 }}/>
-                            </Tooltip>
-                        </Link> : <AccountCircle/>}
-                    </IconButton>
-                    <Link to="/">
-                        <Tooltip title="Главная">
-                        <Button color="inherit" style={{"color": "white"}}>
-                            <HomeIcon/>
-                        </Button>
-                        </Tooltip>
-                    </Link>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon/>
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{'aria-label': 'search'}}
-                        />
-                    </Search>
-                    <Box sx={{flexGrow: 1}}/>
-                    <Box sx={{display: {xs: 'none', md: 'flex'}}} style={{"align-items": "center"}}>
-                        <div className={styles.buttons}>
-                            {isAuth ? (
-                                <>
-                                    <Link to="/add-post">
-                                        <Tooltip title="написать статью">
-                                            <Button color="inherit" style={{"color": "white"}}>
-                                                <FeedIcon/>
-                                            </Button>
-                                        </Tooltip>
-                                    </Link>
-                                    <Tooltip title="Выйти">
-                                        <Button onClick={onClickLogout} color="inherit">
-                                            <LogoutIcon/>
-                                        </Button>
-                                    </Tooltip>
-                                </>
-                            ) : (
-                                <>
-                                    <Link to="/register">
-                                        <Button variant="contained">Создать аккаунт</Button>
-                                    </Link>
-                                    <Link to="/login">
-                                        <Tooltip title="Войти">
-                                            <Button color="inherit" style={{"color": "white"}}>
-                                                <LoginIcon/>
-                                            </Button>
-                                        </Tooltip>
-                                    </Link>
-                                </>
-                            )}
-                        </div>
-                    </Box>
-                    <Box sx={{display: {xs: 'flex', md: 'none'}}}>
+            <ThemeProvider theme={darkTheme}>
+                <AppBar position="static" enableColorOnDark>
+                    <Toolbar>
                         <IconButton
                             size="large"
-                            aria-label="show more"
-                            aria-controls={mobileMenuId}
+                            edge="end"
+                            aria-label="account of current user"
+                            aria-controls={menuId}
                             aria-haspopup="true"
-                            onClick={handleMobileMenuOpen}
+                            onClick={handleProfileMenuOpen}
                             color="inherit"
-                        >
-                            <MoreIcon/>
+                        > {isAuth ?
+                            <Link to="/">
+                                <Tooltip title={userData?.fullName}>
+                                    <Avatar alt="Remy Sharp" src={userData?.avatarUrl} sx={{width: 32, height: 32}}/>
+                                </Tooltip>
+                            </Link> : <AccountCircle/>}
                         </IconButton>
-                    </Box>
-                </Toolbar>
-            </AppBar>
+                        <Link to="/">
+                            <Tooltip title="Главная">
+                                <Button color="inherit" style={{"color": "white"}}>
+                                    <HomeIcon/>
+                                </Button>
+                            </Tooltip>
+                        </Link>
+                        <Search>
+                            <SearchIconWrapper>
+                                <SearchIcon/>
+                            </SearchIconWrapper>
+                            <StyledInputBase
+                                placeholder="Search…"
+                                inputProps={{'aria-label': 'search'}}
+                            />
+                        </Search>
+                        <Box sx={{flexGrow: 1}}/>
+                        <Box sx={{display: {xs: 'none', md: 'flex'}}} style={{"align-items": "center"}}>
+                            <div className={styles.buttons}>
+                                {isAuth ? (
+                                    <>
+                                        <Link to="/add-post">
+                                            <Tooltip title="написать статью">
+                                                <Button color="inherit" style={{"color": "white"}}>
+                                                    <FeedIcon/>
+                                                </Button>
+                                            </Tooltip>
+                                        </Link>
+                                        <Tooltip title="Выйти">
+                                            <Button onClick={onClickLogout} color="inherit">
+                                                <LogoutIcon/>
+                                            </Button>
+                                        </Tooltip>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Link to="/register">
+                                            <Button variant="contained">Создать аккаунт</Button>
+                                        </Link>
+                                        <Link to="/login">
+                                            <Tooltip title="Войти">
+                                                <Button color="inherit" style={{"color": "white"}}>
+                                                    <LoginIcon/>
+                                                </Button>
+                                            </Tooltip>
+                                        </Link>
+                                    </>
+                                )}
+                            </div>
+                        </Box>
+                        <Box sx={{display: {xs: 'flex', md: 'none'}}}>
+                            <IconButton
+                                size="large"
+                                aria-label="show more"
+                                aria-controls={mobileMenuId}
+                                aria-haspopup="true"
+                                onClick={handleMobileMenuOpen}
+                                color="inherit"
+                            >
+                                <MoreIcon/>
+                            </IconButton>
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+            </ThemeProvider>
             {renderMobileMenu}
             {renderMenu}
         </Box>
