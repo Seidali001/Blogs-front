@@ -236,9 +236,9 @@ export const Header = (props) => {
                         </Link>
                         <Search>
                             <form onSubmit={handleSearchSubmit}>
-                            <SearchIconWrapper>
+                            {/*<SearchIconWrapper>
                                 <SearchIcon/>
-                            </SearchIconWrapper>
+                            </SearchIconWrapper>*/}
                             <StyledInputBase
                                 placeholder="Search…"
                                 /*inputProps={{'aria-label': 'search'}}*/
