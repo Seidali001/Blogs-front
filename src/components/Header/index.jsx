@@ -16,7 +16,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import {Search} from "@mui/icons-material";
 import {useDispatch, useSelector} from "react-redux";
 import {logout, selectIsAuth} from "../../redux/slices/auth";
-import {PropTypes, Slide, ThemeProvider, Tooltip, useScrollTrigger} from "@mui/material";
+import {ThemeProvider, Tooltip} from "@mui/material";
 import Button from "@mui/material/Button";
 import LogoutIcon from '@mui/icons-material/Logout';
 import {Link} from "react-router-dom";
@@ -25,11 +25,22 @@ import styles from "./Header.module.scss";
 import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home';
 import Avatar from "@mui/material/Avatar";
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { InputAdornment } from '@material-ui/core';
+
+
 
 
 export const Header = (props) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
 
 
     const dispatch = useDispatch();
@@ -177,6 +188,13 @@ export const Header = (props) => {
         </Menu>
     );
 
+    const history = useHistory();
+    const handleSearchSubmit = (event) => {
+        event.preventDefault();
+        // Перенаправьте пользователя на страницу с результатами поиска
+        history.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+    };
+
     const darkTheme = createTheme({
         palette: {
             mode: 'dark',
@@ -215,13 +233,16 @@ export const Header = (props) => {
                             </Tooltip>
                         </Link>
                         <Search>
+                            <form onSubmit={handleSearchSubmit}>
                             <SearchIconWrapper>
                                 <SearchIcon/>
                             </SearchIconWrapper>
                             <StyledInputBase
                                 placeholder="Search…"
-                                inputProps={{'aria-label': 'search'}}
+                                /*inputProps={{'aria-label': 'search'}}*/
+                                inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
                             />
+                                </form>
                         </Search>
                         <Box sx={{flexGrow: 1}}/>
                         <Box sx={{display: {xs: 'none', md: 'flex'}}} style={{"align-items": "center"}}>
