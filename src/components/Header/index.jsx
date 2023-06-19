@@ -181,7 +181,7 @@ export const Header = () => {
         palette: {
             mode: 'dark',
             primary: {
-                main: '#1976d2',
+                main: '#000000FF',
             },
         },
     });
@@ -189,7 +189,7 @@ export const Header = () => {
     return (
         <Box sx={{flexGrow: 1}}>
             <ThemeProvider theme={darkTheme}>
-                <AppBar position="static" enableColorOnDark>
+                <AppBar position="static">
                     <Toolbar>
                         <IconButton
                             size="large"
