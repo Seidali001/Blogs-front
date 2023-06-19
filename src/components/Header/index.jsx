@@ -27,7 +27,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Avatar from "@mui/material/Avatar";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { InputAdornment } from '@mui/material/InputAdornment/InputAdornment';
+import  InputAdornment  from '@mui/material/InputAdornment';
 
 
 
