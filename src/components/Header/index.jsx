@@ -27,7 +27,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Avatar from "@mui/material/Avatar";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-/*import { InputAdornment } from '@material-ui/core';*/
+import { InputAdornment } from '@mui/material/InputAdornment/InputAdornment';
 
 
 
@@ -244,6 +244,11 @@ export const Header = (props) => {
                                 /*inputProps={{'aria-label': 'search'}}*/
                                 inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
                             />
+                                <InputAdornment position="end">
+                                    <IconButton type="submit" aria-label="search">
+                                        <SearchIcon />
+                                    </IconButton>
+                                </InputAdornment>
                                 </form>
                         </Search>
                         <Box sx={{flexGrow: 1}}/>
