@@ -191,6 +191,7 @@ export const Header = (props) => {
     const history = useNavigate();
     const handleSearchSubmit = (event) => {
         event.preventDefault();
+        console.log(event.currentTarget.value)
         // Перенаправьте пользователя на страницу с результатами поиска
         history.push(`/search?query=${encodeURIComponent(searchQuery)}`);
     };
@@ -204,6 +205,7 @@ export const Header = (props) => {
         },
     });
 
+    console.log(searchQuery)
 
     return (
         <Box sx={{flexGrow: 1}}>
