@@ -239,16 +239,16 @@ export const Header = (props) => {
                             {/*<SearchIconWrapper>
                                 <SearchIcon/>
                             </SearchIconWrapper>*/}
-                            <StyledInputBase
-                                placeholder="Search…"
-                                /*inputProps={{'aria-label': 'search'}}*/
-                                inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
-                            />
                                 <InputAdornment position="end">
                                     <IconButton type="submit" aria-label="search">
                                         <SearchIcon />
                                     </IconButton>
                                 </InputAdornment>
+                            <StyledInputBase
+                                placeholder="Search…"
+                                /*inputProps={{'aria-label': 'search'}}*/
+                                inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
+                            />
                                 </form>
                         </Search>
                         <Box sx={{flexGrow: 1}}/>
