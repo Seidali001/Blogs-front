@@ -189,7 +189,7 @@ export const Header = () => {
     return (
         <Box sx={{flexGrow: 1}}>
             <ThemeProvider theme={darkTheme}>
-                <AppBar {/*position="static"*/} position="fixed">
+                <AppBar position="fixed">
                     <Toolbar>
                         <IconButton
                             size="large"
