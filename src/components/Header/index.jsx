@@ -245,13 +245,13 @@ export const Header = (props) => {
                                 /*inputProps={{'aria-label': 'search'}}*/
                                 inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
                             />
-                                <InputAdornment position="end">
+                                {/*<InputAdornment position="end">*/}
                                     <IconButton type="submit" aria-label="search">
                                         <SearchIconWrapper>
                                         <SearchIcon />
                                         </SearchIconWrapper>
                                     </IconButton>
-                                </InputAdornment>
+                                {/*</InputAdornment>*/}
 
                                 </form>
                         </Search>
