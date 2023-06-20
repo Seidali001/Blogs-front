@@ -236,26 +236,19 @@ export const Header = (props) => {
                         </Link>
                         <Search>
                             <form onSubmit={handleSearchSubmit}>
-
-                            <InputAdornment position="end">
                             <SearchIconWrapper>
-                               <IconButton type="submit" aria-label="search"/>
+                                <SearchIcon/>
                             </SearchIconWrapper>
-                            </InputAdornment>
-
                             <StyledInputBase
                                 placeholder="Search…"
                                 /*inputProps={{'aria-label': 'search'}}*/
                                 inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
                             />
-                                {/*<InputAdornment position="end">
+                                <InputAdornment position="end">
                                     <IconButton type="submit" aria-label="search">
-                                        <SearchIconWrapper>
                                         <SearchIcon />
-                                        </SearchIconWrapper>
                                     </IconButton>
-                                </InputAdornment>*/}
-
+                                </InputAdornment>
                                 </form>
                         </Search>
                         <Box sx={{flexGrow: 1}}/>
