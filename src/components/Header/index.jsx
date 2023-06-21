@@ -27,12 +27,12 @@ import HomeIcon from '@mui/icons-material/Home';
 import Avatar from "@mui/material/Avatar";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import  InputAdornment  from '@mui/material/InputAdornment';
-
-
 
 
 export const Header = (props) => {
+    const dispatch = useDispatch();
+    const isAuth = useSelector(selectIsAuth);
+    const userData = useSelector((state) => state.auth.data);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -43,9 +43,6 @@ export const Header = (props) => {
     };
 
 
-    const dispatch = useDispatch();
-    const isAuth = useSelector(selectIsAuth);
-    const userData = useSelector((state) => state.auth.data);
 
     const onClickLogout = () => {
         if (window.confirm("Are you sure you want to logout")) {
@@ -68,16 +65,6 @@ export const Header = (props) => {
             marginLeft: theme.spacing(3),
             width: 'auto',
         },
-    }));
-
-    const SearchIconWrapper = styled('div')(({theme}) => ({
-        padding: theme.spacing(0, 2),
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
     }));
 
     const StyledInputBase = styled(InputBase)(({theme}) => ({
@@ -188,7 +175,7 @@ export const Header = (props) => {
     const history = useNavigate();
     const handleSearchSubmit = (event) => {
         event.preventDefault();
-        console.log(event.currentTarget.value)
+        console.log(searchQuery)
         // Перенаправьте пользователя на страницу с результатами поиска
         history.push(`/search?query=${encodeURIComponent(searchQuery)}`);
     };
@@ -231,22 +218,28 @@ export const Header = (props) => {
                                 </Button>
                             </Tooltip>
                         </Link>
-                        <Search>
+                        {/*<Search>
                             <form onSubmit={handleSearchSubmit}>
-                            {/*<SearchIconWrapper>
-                                <SearchIcon/>
-                            </SearchIconWrapper>*/}
                                 <IconButton  position="end" type="submit" aria-label="search">
                                     <SearchIcon/>
                                 </IconButton>
                             <StyledInputBase
                                 styled={{"padding": "0px"}}
                                 placeholder="Search…"
-                                /*inputProps={{'aria-label': 'search'}}*/
                                 inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
                             />
-
                                 </form>
+                        </Search>*/}
+                        <Search>
+                            <form onSubmit={handleSearchSubmit}>
+                                <IconButton type="submit" aria-label="search">
+                                    <SearchIcon />
+                                </IconButton>
+                                <StyledInputBase
+                                    placeholder="Search…"
+                                    inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
+                                />
+                            </form>
                         </Search>
                         <Box sx={{flexGrow: 1}}/>
                         <Box sx={{display: {xs: 'none', md: 'flex'}}} style={{"align-items": "center"}}>
