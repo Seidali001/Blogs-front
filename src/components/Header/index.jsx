@@ -239,11 +239,9 @@ export const Header = (props) => {
                             {/*<SearchIconWrapper>
                                 <SearchIcon/>
                             </SearchIconWrapper>*/}
-                                <InputAdornment position="end">
-                                    <IconButton type="submit" aria-label="search">
-                                        <SearchIcon />
-                                    </IconButton>
-                                </InputAdornment>
+                                <IconButton  position="end" type="submit" aria-label="search">
+                                    <SearchIcon/>
+                                </IconButton>
                             <StyledInputBase
                                 placeholder="Search…"
                                 /*inputProps={{'aria-label': 'search'}}*/
