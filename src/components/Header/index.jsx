@@ -243,6 +243,7 @@ export const Header = (props) => {
                                     <SearchIcon/>
                                 </IconButton>
                             <StyledInputBase
+                                styled={{"padding": "0px"}}
                                 placeholder="Search…"
                                 /*inputProps={{'aria-label': 'search'}}*/
                                 inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
