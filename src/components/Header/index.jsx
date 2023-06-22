@@ -264,7 +264,10 @@ export const Header = (props) => {
                         <Search>
                             <form onSubmit={handleSearchSubmit}>
                                 <SearchIconWrapper>
-                                    <IconButton type="submit" position="end" aria-label="search" >
+                                    {/*<IconButton type="submit" position="end" aria-label="search" >
+                                        <SearchIcon />
+                                    </IconButton>*/}
+                                    <IconButton size="large" position="end" aria-label="search" color="inherit">
                                         <SearchIcon />
                                     </IconButton>
                                 </SearchIconWrapper>
