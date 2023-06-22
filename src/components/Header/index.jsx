@@ -262,9 +262,12 @@ export const Header = (props) => {
                                     <>
                                         <Link to="/add-post">
                                             <Tooltip title="написать статью">
-                                                <Button color="inherit" style={{"color": "white"}}>
-                                                    <FeedIcon/>
-                                                </Button>
+                                                {/*<Button color="inherit" style={{"color": "white"}}>*/}
+                                                    {/*<FeedIcon/>*/}
+                                                    <Button variant="contained" color="success">
+                                                        написать статью
+                                                    </Button>
+                                                {/*</Button>*/}
                                             </Tooltip>
                                         </Link>
                                         <Tooltip title="Выйти">

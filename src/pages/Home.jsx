@@ -26,7 +26,6 @@ export const Home = () => {
             if (userData?._id) {
                 return dispatch(fetchSortedPostsByUser(userData?._id));
             }
-
         }
     };
 
@@ -45,7 +44,7 @@ export const Home = () => {
             >
                 <Tab label="По дате"/>
                 <Tab label="Популярные" onClick={handleTabChange}/>
-                {userData ? <Tab label="Мои" onClick={handleTabChange}><p>У вас нет постов</p></Tab> : <></>}
+                {userData ? <Tab label="Мои" onClick={handleTabChange}/> : <></>}
             </Tabs>
             <LoadingPosts userData={userData}/>
         </>
