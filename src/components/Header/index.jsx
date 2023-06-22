@@ -271,8 +271,8 @@ export const Header = (props) => {
                                             </Tooltip>
                                         </Link>
                                         <Tooltip title="Выйти">
-                                            <Button onClick={onClickLogout} color="error">
-                                                <LogoutIcon/>
+                                            <Button onClick={onClickLogout}>
+                                                <LogoutIcon color="error"/>
                                             </Button>
                                         </Tooltip>
                                     </>
