@@ -301,7 +301,7 @@ export const Header = (props) => {
                                 ) : (
                                     <>
                                         <Link to="/register">
-                                            <Button variant="text">Создать аккаунт</Button>
+                                            <Button variant="text" style={{"color": "white"}}>Создать аккаунт</Button>
                                         </Link>
                                         <Link to="/login">
                                             <Tooltip title="Войти">
