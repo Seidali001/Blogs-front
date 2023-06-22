@@ -263,14 +263,14 @@ export const Header = (props) => {
                         <Box sx={{flexGrow: 1}}/>
                         <Search>
                             <form onSubmit={handleSearchSubmit}>
-                                <SearchIconWrapper>
+                                {/*<SearchIconWrapper>*/}
                                     {/*<IconButton type="submit" position="end" aria-label="search" >
                                         <SearchIcon />
                                     </IconButton>*/}
                                     <IconButton size="large" position="end" aria-label="search" color="inherit">
                                         <SearchIcon />
                                     </IconButton>
-                                </SearchIconWrapper>
+                                {/*</SearchIconWrapper>*/}
                                 <StyledInputBase
                                     placeholder="Search…"
                                     inputProps={{
