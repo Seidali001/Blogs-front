@@ -25,8 +25,8 @@ import styles from "./Header.module.scss";
 import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home';
 import Avatar from "@mui/material/Avatar";
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 
 export const Header = (props) => {
@@ -45,23 +45,32 @@ export const Header = (props) => {
         }
     };
 
-    const Search = styled('div')(({theme}) => ({
+    const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         backgroundColor: alpha(theme.palette.common.white, 0.15),
         '&:hover': {
             backgroundColor: alpha(theme.palette.common.white, 0.25),
         },
-        marginRight: theme.spacing(2),
         marginLeft: 0,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
+            marginLeft: theme.spacing(1),
             width: 'auto',
         },
     }));
 
-    const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    const SearchIconWrapper = styled('div')(({theme}) => ({
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }));
+
+    const StyledInputBase = styled(InputBase)(({theme}) => ({
         color: 'inherit',
         '& .MuiInputBase-input': {
             padding: theme.spacing(1, 1, 1, 0),
@@ -200,7 +209,7 @@ export const Header = (props) => {
     return (
         <Box sx={{flexGrow: 1}}>
             <ThemeProvider theme={darkTheme}>
-                <AppBar position="static" >
+                <AppBar position="static">
                     <Toolbar>
                         {/*<IconButton
                             size="large"
@@ -212,12 +221,13 @@ export const Header = (props) => {
                             color="inherit"
                         >*/}
                         <IconButton>
-                        {isAuth ?
-                            <Link to="/">
-                                <Tooltip title={userData?.fullName}>
-                                    <Avatar alt="Remy Sharp" src={userData?.avatarUrl} sx={{width: 32, height: 32}}/>
-                                </Tooltip>
-                            </Link> : <AccountCircle/>}
+                            {isAuth ?
+                                <Link to="/">
+                                    <Tooltip title={userData?.fullName}>
+                                        <Avatar alt="Remy Sharp" src={userData?.avatarUrl}
+                                                sx={{width: 32, height: 32}}/>
+                                    </Tooltip>
+                                </Link> : <AccountCircle/>}
                         </IconButton>
                         <Link to="/">
                             <Tooltip title="Главная">
@@ -251,13 +261,19 @@ export const Header = (props) => {
 
                         </Search>*/}
                         <Search>
-                            <form  onSubmit={handleSearchSubmit}>
-                                <IconButton  position="end" type="submit" aria-label="search">
-                                    <SearchIcon/>
-                                </IconButton>
+                            <form onSubmit={handleSearchSubmit}>
+                                <SearchIconWrapper>
+                                    <IconButton position="end" type="submit" aria-label="search">
+                                        <SearchIcon/>
+                                    </IconButton>
+                                </SearchIconWrapper>
                                 <StyledInputBase
                                     placeholder="Search…"
-                                    inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
+                                    inputProps={{
+                                        'aria-label': 'search',
+                                        value: searchQuery,
+                                        onChange: handleSearchChange
+                                    }}
                                 />
                             </form>
                         </Search>
@@ -269,10 +285,10 @@ export const Header = (props) => {
                                         <Link to="/add-post">
                                             <Tooltip title="написать статью">
                                                 {/*<Button color="inherit" style={{"color": "white"}}>*/}
-                                                    {/*<FeedIcon/>*/}
+                                                {/*<FeedIcon/>*/}
                                                 <Button variant="outlined" color="inherit">
-                                                        написать статью
-                                                    </Button>
+                                                    написать статью
+                                                </Button>
                                                 {/*</Button>*/}
                                             </Tooltip>
                                         </Link>
