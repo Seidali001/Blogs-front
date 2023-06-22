@@ -264,14 +264,14 @@ export const Header = (props) => {
                                             <Tooltip title="написать статью">
                                                 {/*<Button color="inherit" style={{"color": "white"}}>*/}
                                                     {/*<FeedIcon/>*/}
-                                                <Button variant="outlined" color="error">
+                                                <Button variant="outlined" color="inherit">
                                                         написать статью
                                                     </Button>
                                                 {/*</Button>*/}
                                             </Tooltip>
                                         </Link>
                                         <Tooltip title="Выйти">
-                                            <Button onClick={onClickLogout} color="inherit">
+                                            <Button onClick={onClickLogout} color="error">
                                                 <LogoutIcon/>
                                             </Button>
                                         </Tooltip>
