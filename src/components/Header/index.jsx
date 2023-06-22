@@ -264,7 +264,7 @@ export const Header = (props) => {
                                             <Tooltip title="написать статью">
                                                 {/*<Button color="inherit" style={{"color": "white"}}>*/}
                                                     {/*<FeedIcon/>*/}
-                                                    <Button variant="contained" color="success">
+                                                <Button variant="outlined" color="error">
                                                         написать статью
                                                     </Button>
                                                 {/*</Button>*/}
