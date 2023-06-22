@@ -301,7 +301,7 @@ export const Header = (props) => {
                                 ) : (
                                     <>
                                         <Link to="/register">
-                                            <Button variant="contained">Создать аккаунт</Button>
+                                            <Button variant="text">Создать аккаунт</Button>
                                         </Link>
                                         <Link to="/login">
                                             <Tooltip title="Войти">
