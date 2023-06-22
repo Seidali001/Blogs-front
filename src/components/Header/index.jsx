@@ -264,8 +264,8 @@ export const Header = (props) => {
                         <Search>
                             <form onSubmit={handleSearchSubmit}>
                                 <SearchIconWrapper>
-                                    <IconButton position="end" aria-label="search">
-                                        <SearchIcon type="submit"/>
+                                    <IconButton type="submit" position="end" aria-label="search" >
+                                        <SearchIcon />
                                     </IconButton>
                                 </SearchIconWrapper>
                                 <StyledInputBase
