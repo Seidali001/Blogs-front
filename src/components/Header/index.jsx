@@ -38,12 +38,6 @@ export const Header = (props) => {
 
     const [searchQuery, setSearchQuery] = useState('');
 
-    const handleSearchChange = (event) => {
-        setSearchQuery(event.target.value);
-    };
-
-
-
     const onClickLogout = () => {
         if (window.confirm("Are you sure you want to logout")) {
             dispatch(logout());
@@ -172,7 +166,12 @@ export const Header = (props) => {
         </Menu>
     );
 
-    const history = useNavigate();
+    const handleSearchChange = (event) => {
+        /*setSearchQuery(event.target.value);*/
+        console.log(event.target.value)
+    };
+
+    //const history = useNavigate();
     const handleSearchSubmit = (event) => {
         event.preventDefault();
         console.log(searchQuery)
@@ -230,10 +229,22 @@ export const Header = (props) => {
                             />
                                 </form>
                         </Search>*/}
-                        <Search>
+                        {/*<Search>
                             <form onSubmit={handleSearchSubmit}>
                                 <IconButton type="submit" aria-label="search">
                                     <SearchIcon />
+                                </IconButton>
+                                <StyledInputBase
+                                    placeholder="Search…"
+                                    inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
+                                />
+                            </form>
+
+                        </Search>*/}
+                        <Search>
+                            <form onSubmit={handleSearchSubmit}>
+                                <IconButton  position="end" type="submit" aria-label="search">
+                                    <SearchIcon/>
                                 </IconButton>
                                 <StyledInputBase
                                     placeholder="Search…"
