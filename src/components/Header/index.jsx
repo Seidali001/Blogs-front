@@ -261,25 +261,25 @@ export const Header = (props) => {
 
                         </Search>*/}
                         <Box sx={{flexGrow: 1}}/>
+                        <Search>
+                            <form onSubmit={handleSearchSubmit}>
+                                <SearchIconWrapper>
+                                    <IconButton position="end" type="submit" aria-label="search">
+                                        <SearchIcon/>
+                                    </IconButton>
+                                </SearchIconWrapper>
+                                <StyledInputBase
+                                    placeholder="Search…"
+                                    inputProps={{
+                                        'aria-label': 'search',
+                                        value: searchQuery,
+                                        onChange: handleSearchChange
+                                    }}
+                                />
+                            </form>
+                        </Search>
                         <Box sx={{display: {xs: 'none', md: 'flex'}}} style={{"align-items": "center"}}>
                             <div className={styles.buttons}>
-                                <Search>
-                                    <form onSubmit={handleSearchSubmit}>
-                                        <SearchIconWrapper>
-                                            <IconButton position="end" type="submit" aria-label="search">
-                                                <SearchIcon/>
-                                            </IconButton>
-                                        </SearchIconWrapper>
-                                        <StyledInputBase
-                                            placeholder="Search…"
-                                            inputProps={{
-                                                'aria-label': 'search',
-                                                value: searchQuery,
-                                                onChange: handleSearchChange
-                                            }}
-                                        />
-                                    </form>
-                                </Search>
                                 {isAuth ? (
                                     <>
                                         <Link to="/add-post">
