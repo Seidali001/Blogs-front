@@ -72,7 +72,7 @@ export const Header = (props) => {
         },
     }));
 
-    const isMenuOpen = Boolean(anchorEl);
+    /*const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const handleProfileMenuOpen = (event) => {
@@ -164,7 +164,7 @@ export const Header = (props) => {
                 <p>Profile</p>
             </MenuItem>
         </Menu>
-    );
+    );*/
 
     const handleSearchChange = (event) => {
         /*setSearchQuery(event.target.value);*/
@@ -195,7 +195,7 @@ export const Header = (props) => {
             <ThemeProvider theme={darkTheme}>
                 <AppBar position="static" >
                     <Toolbar>
-                        <IconButton
+                        {/*<IconButton
                             size="large"
                             edge="end"
                             aria-label="account of current user"
@@ -203,7 +203,9 @@ export const Header = (props) => {
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
                             color="inherit"
-                        > {isAuth ?
+                        >*/}
+                        <IconButton>
+                        {isAuth ?
                             <Link to="/">
                                 <Tooltip title={userData?.fullName}>
                                     <Avatar alt="Remy Sharp" src={userData?.avatarUrl} sx={{width: 32, height: 32}}/>
@@ -286,7 +288,7 @@ export const Header = (props) => {
                                 )}
                             </div>
                         </Box>
-                        <Box sx={{display: {xs: 'flex', md: 'none'}}}>
+                        {/*<Box sx={{display: {xs: 'flex', md: 'none'}}}>
                             <IconButton
                                 size="large"
                                 aria-label="show more"
@@ -297,13 +299,14 @@ export const Header = (props) => {
                             >
                                 <MoreIcon/>
                             </IconButton>
-                        </Box>
+                        </Box>*/}
                     </Toolbar>
                 </AppBar>
             </ThemeProvider>
-            {renderMobileMenu}
-            {renderMenu}
+            {/*{renderMobileMenu}*/}
+            {/*{renderMenu}*/}
         </Box>
+
     );
 }
 
