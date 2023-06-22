@@ -13,7 +13,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import {Search} from "@mui/icons-material";
+import Search from "@mui/icons-material/Search";
 import {useDispatch, useSelector} from "react-redux";
 import {logout, selectIsAuth} from "../../redux/slices/auth";
 import {ThemeProvider, Tooltip} from "@mui/material";
@@ -177,7 +177,7 @@ export const Header = (props) => {
         event.preventDefault();
         console.log(searchQuery)
         // Перенаправьте пользователя на страницу с результатами поиска
-        history.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+        //history.push(`/search?query=${encodeURIComponent(searchQuery)}`);
     };
 
     const darkTheme = createTheme({
