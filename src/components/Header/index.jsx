@@ -33,8 +33,8 @@ export const Header = (props) => {
     const dispatch = useDispatch();
     const isAuth = useSelector(selectIsAuth);
     const userData = useSelector((state) => state.auth.data);
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+    /*const [anchorEl, setAnchorEl] = React.useState(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);*/
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -169,6 +169,7 @@ export const Header = (props) => {
     const handleSearchChange = (event) => {
         /*setSearchQuery(event.target.value);*/
         console.log(event.target.value)
+        setSearchQuery(event.target.value)
     };
 
     //const history = useNavigate();
