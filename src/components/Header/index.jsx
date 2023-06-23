@@ -257,7 +257,7 @@ export const Header = (props) => {
                                     {/*<IconButton type="submit" position="end" aria-label="search" >
                                         <SearchIcon />
                                     </IconButton>*/}
-                                    <IconButton size="large" position="end" {/*aria-label="search"*/} color="inherit">
+                                    <IconButton size="large" position="end" color="inherit">
                                         <SearchIcon />
                                     </IconButton>
                                 {/*</SearchIconWrapper>*/}
