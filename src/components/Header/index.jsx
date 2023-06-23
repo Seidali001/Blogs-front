@@ -266,8 +266,8 @@ export const Header = (props) => {
                                     inputProps={{
                                         'aria-label': 'search',
                                     }}
-                                    value={searchQuery}
 
+                                onChange={handleSearchChange}
                                 />
                             </form>
                         </Search>
