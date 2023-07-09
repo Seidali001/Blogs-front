@@ -100,7 +100,6 @@ const postsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase((state, action) => {
-      // Ваш код для обработки action setAppStastusAC
       state.status = action.payload;
       })
       .addCase(fetchPosts.pending, (state) => {
