@@ -35,7 +35,7 @@ const searchItemHandler = () => {
   return (
     <Paper
       component="form"
-      sx={{ p: '2px 4px', border: double, borderColor: 'white', display: 'flex', alignItems: 'center', width: 250, height: 35}}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 250, height: 35}}
     >
       <InputBase
         sx={{ border: double, borderColor: 'white', ml: 1, flex: 1, color: 'dark'}}
