@@ -26,8 +26,10 @@ import { postsActions } from '../../redux/slices/posts';
       }
 
 const searchItemHandler = () => {
+    debugger
     let taskTitleTrimmed = itemTitle.trim()
-    dispatch(postsActions.searchTodolistAC(taskTitleTrimmed));
+    dispatch(postsActions.searchPostAC(taskTitleTrimmed));
+    
 }
 
   return (

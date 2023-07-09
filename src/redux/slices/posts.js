@@ -93,16 +93,16 @@ const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    searchTodolistAC: (state, action) => {
-      state.items = state.items.filter((tl) => action.payload === tl.title);
+    searchPostAC: (state, action) => {
+      state.posts.items = state.posts.items.filter((p) => action.payload === p.title);
     }
   },
   extraReducers: (builder) => {
     builder
-    .addCase((state, action) => {
+      .addCase((state, action) => {
       // Ваш код для обработки action setAppStastusAC
       state.status = action.payload;
-    })
+      })
       .addCase(fetchPosts.pending, (state) => {
         state.posts.items = [];
         state.posts.status = "loading";
@@ -168,7 +168,7 @@ const postsSlice = createSlice({
         state.posts.items = [];
         state.posts.status = "error";
       })
-  .addCase(fetchSortedPostsByUser.pending, (state) => {
+      .addCase(fetchSortedPostsByUser.pending, (state) => {
       state.posts.items = [];
       state.posts.status = "loading";
     })
