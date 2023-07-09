@@ -88,9 +88,17 @@ const initialState = {
 const postsSlice = createSlice({
   name: "posts",
   initialState,
-  reducers: {},
+  reducers: {
+    searchTodolistAC: (state, action) => {
+      state.items = state.items.filter((tl) => action.payload === tl.title);
+    }
+  },
   extraReducers: (builder) => {
     builder
+    .addCase(setAppStastusAC, (state, action) => {
+      // Ваш код для обработки action setAppStastusAC
+      state.status = action.payload;
+    })
       .addCase(fetchPosts.pending, (state) => {
         state.posts.items = [];
         state.posts.status = "loading";

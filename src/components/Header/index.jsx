@@ -37,6 +37,7 @@ export const Header = (props) => {
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);*/
 
     const [searchQuery, setSearchQuery] = useState('');
+    let [itemTitle, setItemTitle] = useState<string>("")
 
     const onClickLogout = () => {
         if (window.confirm("Are you sure you want to logout")) {
@@ -171,19 +172,30 @@ export const Header = (props) => {
         </Menu>
     );*/
 
-    const handleSearchChange = (event) => {
-        /*setSearchQuery(event.target.value);*/
-        console.log(event.target.value)
-        setSearchQuery(event.target.value)
-    };
+    function onChangeHandler(event) {
+        const value = event.currentTarget.value
+        dispatch(fetchPosts())
+        if (value) {
+          setItemTitle(event.currentTarget.value)
+        } else {
+          dispatch(fetchPosts())
+          setItemTitle("")
+        }
+          }
 
     //const history = useNavigate();
-    const handleSearchSubmit = (event) => {
+    /* const handleSearchSubmit = (event) => {
         event.preventDefault();
         console.log(searchQuery)
         // Перенаправьте пользователя на страницу с результатами поиска
         //history.push(`/search?query=${encodeURIComponent(searchQuery)}`);
-    };
+    }; */
+
+    const searchItemHandler = () => {
+        let taskTitleTrimmed = itemTitle.trim()
+        //dispatch(searchTodolistsTC(taskTitleTrimmed))
+        dispatch(todolistsActions.searchTodolistAC(taskTitleTrimmed));
+    }
 
     const darkTheme = createTheme({
         palette: {
@@ -252,12 +264,12 @@ export const Header = (props) => {
                         </Search>*/}
                         <Box sx={{flexGrow: 1}}/>
                         <Search>
-                            <form onSubmit={handleSearchSubmit}>
+                            <form onSubmit={searchItemHandler}>
                                 {/*<SearchIconWrapper>*/}
                                     {/*<IconButton type="submit" position="end" aria-label="search" >
                                         <SearchIcon />
                                     </IconButton>*/}
-                                    <IconButton size="large" position="end" color="inherit">
+                                    <IconButton type="button" size="large" position="end" color="inherit" onClick={searchItemHandler} disabled={!itemTitle}>
                                         <SearchIcon />
                                     </IconButton>
                                 {/*</SearchIconWrapper>*/}
@@ -266,8 +278,8 @@ export const Header = (props) => {
                                     inputProps={{
                                         'aria-label': 'search',
                                     }}
-
-                                onChange={handleSearchChange}
+                                    value={itemTitle}
+                                    onChange={onChangeHandler}
                                 />
                             </form>
                         </Search>
