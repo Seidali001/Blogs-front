@@ -266,8 +266,7 @@ export const Header = (props) => {
                         </Search>*/}
                         <Box sx={{flexGrow: 1}}/>
                         <Search>
-                             
-                            <CustomizedInputBase sx={{borderRadius: 5}} style={{"border":"10","border-color": "white"}}/>
+                            <CustomizedInputBase />
                         </Search>
                         <Box sx={{display: {xs: 'none', md: 'flex'}}} style={{"align-items": "center"}}>
                             <div className={styles.buttons}>

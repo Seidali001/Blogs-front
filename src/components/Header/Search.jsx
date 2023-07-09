@@ -38,7 +38,7 @@ const searchItemHandler = () => {
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 250, height: 35}}
     >
       <InputBase
-        sx={{ ml: 1, flex: 1, color: 'dark'}}
+        sx={{ border: double, borderColor: 'white', ml: 1, flex: 1, color: 'dark'}}
         placeholder=" Search . . ."
         inputProps={{ 'aria-label': 'search google maps' }}
         value={itemTitle}
