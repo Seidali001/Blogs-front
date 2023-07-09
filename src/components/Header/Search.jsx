@@ -39,7 +39,7 @@ const searchItemHandler = () => {
     >
       <InputBase
         sx={{ border: double, borderColor: 'white', ml: 1, flex: 1, color: 'dark'}}
-        color="inherit"
+        borderColor="white"
         placeholder=" Search . . ."
         inputProps={{ 'aria-label': 'search google maps' }}
         value={itemTitle}
