@@ -211,7 +211,7 @@ export const Header = (props) => {
     console.log(searchQuery)
 
     return (
-        <Box position = "sticky" top = "0" z-index = "73" sx={{flexGrow: 1}}>
+        <Box sx={{flexGrow: 1}} position = "sticky" top = "0" z-index = "73">
             <ThemeProvider theme={darkTheme}>
                 <AppBar  position = "sticky" top = "0" z-index = "73" >
                     <Toolbar>
