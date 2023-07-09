@@ -202,6 +202,7 @@ export const Header = (props) => {
     const darkTheme = createTheme({
         palette: {
             mode: 'dark',
+            opacity: 0,
             primary: {
                 main: '#000000FF',
             },
