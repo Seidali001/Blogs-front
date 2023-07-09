@@ -27,9 +27,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import Avatar from "@mui/material/Avatar";
 import {useState} from 'react';
 //import {useNavigate} from 'react-router-dom';
-import {fetchPosts} from "../../redux/slices/posts";
-//import todolistsActions from "../../redux/slices/posts"
-import { postsActions } from '../../redux/slices/posts';
+import {fetchPosts, postsActions} from "../../redux/slices/posts"
+import CustomizedInputBase from "./Search"
 
 
 export const Header = (props) => {
@@ -267,24 +266,8 @@ export const Header = (props) => {
                         </Search>*/}
                         <Box sx={{flexGrow: 1}}/>
                         <Search>
-                            <form onSubmit={searchItemHandler}>
-                                {/*<SearchIconWrapper>*/}
-                                    {/*<IconButton type="submit" position="end" aria-label="search" >
-                                        <SearchIcon />
-                                    </IconButton>*/}
-                                    <IconButton type="button" size="large" position="end" color="inherit" onClick={searchItemHandler} disabled={!itemTitle}>
-                                        <SearchIcon />
-                                    </IconButton>
-                                {/*</SearchIconWrapper>*/}
-                                <StyledInputBase
-                                    placeholder="Search…"
-                                    inputProps={{
-                                        'aria-label': 'search',
-                                    }}
-                                    value={itemTitle}
-                                    onChange={onChangeHandler}
-                                />
-                            </form>
+                             
+                            <CustomizedInputBase/>
                         </Search>
                         <Box sx={{display: {xs: 'none', md: 'flex'}}} style={{"align-items": "center"}}>
                             <div className={styles.buttons}>
@@ -343,4 +326,6 @@ export const Header = (props) => {
 
     );
 }
+
+
 
