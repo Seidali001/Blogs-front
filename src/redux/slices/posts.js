@@ -74,6 +74,10 @@ export const fetchSortedPostsByUser = createAsyncThunk("posts/fetchSortedPostsBy
 
 })
 
+/* export const searchTodolistAC = (state, action) => {
+  state.items = state.items.filter((tl) => action.payload === tl.title);
+} */
+
 const initialState = {
   posts: {
     items: [],
@@ -95,7 +99,7 @@ const postsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(setAppStastusAC, (state, action) => {
+    .addCase((state, action) => {
       // Ваш код для обработки action setAppStastusAC
       state.status = action.payload;
     })

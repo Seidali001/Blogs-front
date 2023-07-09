@@ -26,7 +26,10 @@ import LoginIcon from '@mui/icons-material/Login';
 import HomeIcon from '@mui/icons-material/Home';
 import Avatar from "@mui/material/Avatar";
 import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+//import {useNavigate} from 'react-router-dom';
+import {fetchPosts} from "../../redux/slices/posts";
+//import todolistsActions from "../../redux/slices/posts"
+import { postsActions } from '../../redux/slices/posts';
 
 
 export const Header = (props) => {
@@ -37,7 +40,7 @@ export const Header = (props) => {
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);*/
 
     const [searchQuery, setSearchQuery] = useState('');
-    let [itemTitle, setItemTitle] = useState<string>("")
+    let [itemTitle, setItemTitle] = useState("")
 
     const onClickLogout = () => {
         if (window.confirm("Are you sure you want to logout")) {
@@ -194,7 +197,7 @@ export const Header = (props) => {
     const searchItemHandler = () => {
         let taskTitleTrimmed = itemTitle.trim()
         //dispatch(searchTodolistsTC(taskTitleTrimmed))
-        dispatch(todolistsActions.searchTodolistAC(taskTitleTrimmed));
+        dispatch(postsActions.searchTodolistAC(taskTitleTrimmed));
     }
 
     const darkTheme = createTheme({
