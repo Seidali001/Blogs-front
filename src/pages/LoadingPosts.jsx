@@ -18,10 +18,8 @@ export const LoadingPosts = ({userData}) => {
                 <Post key={index} isLoading={true} />
               ))
             : posts?.items?.map((obj, index) => (
-              <Link to={`/posts/${obj._id}`}  style={{textDecoration : "none"}} >
+             /*  <Link to={`/posts/${obj._id}`}  style={{textDecoration : "none"}} > */
                 <Post
-                  textDecoration = "none"
-                  text-decoration = "none"
                   key={index}
                   id={obj._id}
                   title={obj.title}
@@ -36,7 +34,7 @@ export const LoadingPosts = ({userData}) => {
                   isEditable={userData?._id === obj.user._id}
                   
                 />
-                </Link>
+               /*  </Link> */
               ))}
         </Grid>
         <Grid xs={4} item>

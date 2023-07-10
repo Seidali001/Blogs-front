@@ -46,7 +46,7 @@ export const Home = () => {
                 <Tab label="Популярные" onClick={handleTabChange}/>
                 {userData ? <Tab label="Мои" onClick={handleTabChange}/> : <></>}
             </Tabs>
-            <LoadingPosts  userData={userData} sx={{textDecoration : "none"}}/>
+            <LoadingPosts  userData={userData}/>
         </>
     );
 };
