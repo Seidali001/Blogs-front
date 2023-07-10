@@ -214,7 +214,7 @@ export const Header = (props) => {
     return (
         <Box position = "sticky" top = "0" style={{zIndex : "100"}}>
             <ThemeProvider theme={darkTheme}>
-                <AppBar >
+                <AppBar  position = "sticky" top = "0" >
                     <Toolbar>
                         {/*<IconButton
                             size="large"
