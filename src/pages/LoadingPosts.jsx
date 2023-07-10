@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
 import { Post, TagsBlock } from "../components";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const LoadingPosts = ({userData}) => {
   const { posts, tags } = useSelector((state) => state.posts);
@@ -17,6 +18,7 @@ export const LoadingPosts = ({userData}) => {
                 <Post key={index} isLoading={true} />
               ))
             : posts?.items?.map((obj, index) => (
+              <Link to={`/posts/${obj._id}`}>
                 <Post
                   key={index}
                   id={obj._id}
@@ -30,7 +32,9 @@ export const LoadingPosts = ({userData}) => {
                   commentsCount={obj.comments.length}
                   tags={obj.tags}
                   isEditable={userData?._id === obj.user._id}
+                  
                 />
+                </Link>
               ))}
         </Grid>
         <Grid xs={4} item>

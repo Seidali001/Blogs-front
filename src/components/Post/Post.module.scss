@@ -12,7 +12,7 @@ $blue: #4361ee;
   &:hover {
     border: 1px solid $blue;
     box-shadow: 0 0 0 1px $blue;
-
+    /* cursor: pointer; */
     .editButtons {
       opacity: 1;
     }
