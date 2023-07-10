@@ -18,7 +18,7 @@ export const LoadingPosts = ({userData}) => {
                 <Post key={index} isLoading={true} />
               ))
             : posts?.items?.map((obj, index) => (
-              <Link to={`/posts/${obj._id}`} textDecoration = "none" text-decoration = "none" >
+              <Link to={`/posts/${obj._id}`} text-decoration = "none" >
                 <Post
                   textDecoration = "none"
                   text-decoration = "none"
