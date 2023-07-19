@@ -1,33 +1,24 @@
-import * as React from 'react';
-import {styled, alpha, createTheme} from '@mui/material/styles';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { ThemeProvider, Tooltip } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
+import Avatar from "@mui/material/Avatar";
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
+import Button from "@mui/material/Button";
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import Search from "@mui/icons-material/Search";
-import {useDispatch, useSelector} from "react-redux";
-import {logout, selectIsAuth} from "../../redux/slices/auth";
-import {ThemeProvider, Tooltip} from "@mui/material";
-import Button from "@mui/material/Button";
-import LogoutIcon from '@mui/icons-material/Logout';
-import {Link} from "react-router-dom";
-import FeedIcon from '@mui/icons-material/Feed';
+import Toolbar from '@mui/material/Toolbar';
+import { alpha, createTheme, styled } from '@mui/material/styles';
+import * as React from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { logout, selectIsAuth } from "../../redux/slices/auth";
 import styles from "./Header.module.scss";
-import LoginIcon from '@mui/icons-material/Login';
-import HomeIcon from '@mui/icons-material/Home';
-import Avatar from "@mui/material/Avatar";
-import {useState} from 'react';
 //import {useNavigate} from 'react-router-dom';
-import {fetchPosts, postsActions} from "../../redux/slices/posts"
+import { fetchPosts, postsActions } from "../../redux/slices/posts";
 import CustomizedInputBase from "./Search"
 
 
