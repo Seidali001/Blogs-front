@@ -65,7 +65,6 @@ export const fetchSortedPostsByDate = createAsyncThunk(
 export const fetchSortedPostsByUser = createAsyncThunk("posts/fetchSortedPostsByUser", async (userId) => {
   try {
     const { data } = await axios.get(`/posts/user/${userId}`);
-    console.log(data)
     return data;
   } catch (error) {
     console.warn(error);
@@ -73,10 +72,6 @@ export const fetchSortedPostsByUser = createAsyncThunk("posts/fetchSortedPostsBy
   }
 
 })
-
-/* export const searchTodolistAC = (state, action) => {
-  state.items = state.items.filter((tl) => action.payload === tl.title);
-} */
 
 const initialState = {
   posts: {
