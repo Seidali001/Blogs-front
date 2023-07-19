@@ -4,13 +4,12 @@ import axios from "../axios";
 import { Post } from "./Post";
 import Grid from "@mui/material/Grid";
 import { TagsBlock } from "./TagsBlock";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchPostsByTags } from "../redux/slices/posts";
 import { LoadingPosts } from "../pages/LoadingPosts";
 import { CommentsBlock } from "./CommentsBlock";
 
 export const PostsByTag = () => {
-  const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.data);
   const { tag } = useParams();
   const [allPostsByTag, setAllPostsByTag] = useState([]);
@@ -23,7 +22,6 @@ export const PostsByTag = () => {
         if (tag) {
           const response = await axios.get(`/posts/tags/${tag}`);
           setAllPostsByTag(response.data);
-          console.log(response.data);
         }
       } catch (error) {
         /*console.warn("не получил положительного ответа");*/
@@ -51,7 +49,7 @@ export const PostsByTag = () => {
                   id={obj._id}
                   title={obj.title}
                   imageUrl={
-                    obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ""
+                    obj.imageUrl ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}` : ""
                   }
                   user={obj.user}
                   createdAt={obj.createdAt}
