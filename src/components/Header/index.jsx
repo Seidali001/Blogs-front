@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout, selectIsAuth } from "../../redux/slices/auth";
 import styles from "./Header.module.scss";
-//import {useNavigate} from 'react-router-dom';
 import { fetchPosts, postsActions } from "../../redux/slices/posts";
 import CustomizedInputBase from "./Search"
 
@@ -26,8 +25,6 @@ export const Header = (props) => {
     const dispatch = useDispatch();
     const isAuth = useSelector(selectIsAuth);
     const userData = useSelector((state) => state.auth.data);
-    /*const [anchorEl, setAnchorEl] = React.useState(null);
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);*/
 
     const [searchQuery, setSearchQuery] = useState('');
     let [itemTitle, setItemTitle] = useState("")
@@ -58,7 +55,6 @@ export const Header = (props) => {
         color: 'inherit',
         '& .MuiInputBase-input': {
             padding: theme.spacing(1, 1, 1, 0),
-            // vertical padding + font size from searchIcon
             paddingLeft: `calc(1em + ${theme.spacing(4)})`,
             transition: theme.transitions.create('width'),
             width: '100%',
@@ -71,100 +67,6 @@ export const Header = (props) => {
         },
     }));
 
-    /*const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    const handleProfileMenuOpen = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleMobileMenuClose = () => {
-        setMobileMoreAnchorEl(null);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-        handleMobileMenuClose();
-    };
-
-    const handleMobileMenuOpen = (event) => {
-        setMobileMoreAnchorEl(event.currentTarget);
-    };
-
-    const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            id={menuId}
-            keepMounted
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
-    );
-
-    const mobileMenuId = 'primary-search-account-menu-mobile';
-    const renderMobileMenu = (
-        <Menu
-            anchorEl={mobileMoreAnchorEl}
-            anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            id={mobileMenuId}
-            keepMounted
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            open={isMobileMenuOpen}
-            onClose={handleMobileMenuClose}
-        >
-            <MenuItem>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="error">
-                        <MailIcon/>
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
-            <MenuItem>
-                <IconButton
-                    size="large"
-                    aria-label="show 17 new notifications"
-                    color="inherit"
-                >
-                    <Badge badgeContent={17} color="error">
-                        <NotificationsIcon/>
-                    </Badge>
-                </IconButton>
-                <p>Notifications</p>
-            </MenuItem>
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    size="large"
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle/>
-                </IconButton>
-                <p>Profile</p>
-            </MenuItem>
-        </Menu>
-    );*/
-
     function onChangeHandler(event) {
         const value = event.currentTarget.value
         dispatch(fetchPosts())
@@ -176,17 +78,8 @@ export const Header = (props) => {
         }
           }
 
-    //const history = useNavigate();
-    /* const handleSearchSubmit = (event) => {
-        event.preventDefault();
-        console.log(searchQuery)
-        // Перенаправьте пользователя на страницу с результатами поиска
-        //history.push(`/search?query=${encodeURIComponent(searchQuery)}`);
-    }; */
-
     const searchItemHandler = () => {
         let taskTitleTrimmed = itemTitle.trim()
-        //dispatch(searchTodolistsTC(taskTitleTrimmed))
         dispatch(postsActions.searchTodolistAC(taskTitleTrimmed));
     }
 
@@ -207,15 +100,6 @@ export const Header = (props) => {
             <ThemeProvider theme={darkTheme}>
                 <AppBar  position = "sticky" top = "0" >
                     <Toolbar>
-                        {/*<IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >*/}
                         <IconButton>
                             {isAuth ?
                                 <Link to="/">
@@ -232,30 +116,6 @@ export const Header = (props) => {
                                 </Button>
                             </Tooltip>
                         </Link>
-                        {/*<Search>
-                            <form onSubmit={handleSearchSubmit}>
-                                <IconButton  position="end" type="submit" aria-label="search">
-                                    <SearchIcon/>
-                                </IconButton>
-                            <StyledInputBase
-                                styled={{"padding": "0px"}}
-                                placeholder="Search…"
-                                inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
-                            />
-                                </form>
-                        </Search>*/}
-                        {/*<Search>
-                            <form onSubmit={handleSearchSubmit}>
-                                <IconButton type="submit" aria-label="search">
-                                    <SearchIcon />
-                                </IconButton>
-                                <StyledInputBase
-                                    placeholder="Search…"
-                                    inputProps={{ 'aria-label': 'search', value: searchQuery, onChange: handleSearchChange }}
-                                />
-                            </form>
-
-                        </Search>*/}
                         <Box sx={{flexGrow: 1}}/>
                         <Search>
                             <CustomizedInputBase />
@@ -266,12 +126,9 @@ export const Header = (props) => {
                                     <>
                                         <Link to="/add-post">
                                             <Tooltip title="написать статью">
-                                                {/*<Button color="inherit" style={{"color": "white"}}>*/}
-                                                {/*<FeedIcon/>*/}
                                                 <Button variant="outlined" color="inherit">
                                                     написать статью
                                                 </Button>
-                                                {/*</Button>*/}
                                             </Tooltip>
                                         </Link>
                                         <Tooltip title="Выйти">
@@ -296,23 +153,9 @@ export const Header = (props) => {
                                 )}
                             </div>
                         </Box>
-                        {/*<Box sx={{display: {xs: 'flex', md: 'none'}}}>
-                            <IconButton
-                                size="large"
-                                aria-label="show more"
-                                aria-controls={mobileMenuId}
-                                aria-haspopup="true"
-                                onClick={handleMobileMenuOpen}
-                                color="inherit"
-                            >
-                                <MoreIcon/>
-                            </IconButton>
-                        </Box>*/}
                     </Toolbar>
                 </AppBar>
             </ThemeProvider>
-            {/*{renderMobileMenu}*/}
-            {/*{renderMenu}*/}
         </Box>
 
     );
